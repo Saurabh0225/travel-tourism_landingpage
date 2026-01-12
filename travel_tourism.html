@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust Adventures | Discover Your Next Journey</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #3498db;
+            --primary-dark: #2980b9;
+            --secondary-color: #e74c3c;
+            --accent-color: #2ecc71;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+            --light-bg: #f9f9f9;
+            --white: #ffffff;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --border-radius: 10px;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            color: var(--text-light);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 4px;
+            background: var(--primary-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 14px 30px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background-color: var(--white);
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        .btn-accent {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+
+        .btn-accent:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-large {
+            padding: 16px 40px;
+            font-size: 1.1rem;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            transition: var(--transition);
+        }
+
+        .header-scrolled {
+            padding: 10px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 8px;
+            color: var(--secondary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 150px;
+            padding-bottom: 100px;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-search {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin-top: 50px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .search-title {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+            text-align: center;
+        }
+
+        .search-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .search-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .search-form .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .search-form .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+
+        .search-form .form-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .search-form .form-row .form-group {
+            flex: 1;
+        }
+
+        /* Destinations */
+        .destinations {
+            background-color: var(--white);
+        }
+
+        .destination-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .destination-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .destination-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .destination-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .destination-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .destination-content {
+            padding: 25px;
+        }
+
+        .destination-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .destination-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .destination-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .destination-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        /* Value Proposition */
+        .value-proposition {
+            background-color: var(--light-bg);
+        }
+
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .value-card {
+            background-color: var(--white);
+            padding: 40px 30px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Popular Packages */
+        .popular-packages {
+            background-color: var(--white);
+        }
+
+        .package-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .package-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .package-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .package-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .package-content {
+            padding: 25px;
+        }
+
+        .package-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .price-amount {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        .discount-badge {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Booking Steps */
+        .booking-steps {
+            background-color: var(--light-bg);
+        }
+
+        .steps-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .step-row {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .step-row::before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-color);
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 15px;
+        }
+
+        .step-content {
+            padding: 0 10px;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background-color: var(--white);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background-color: var(--light-bg);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .testimonial-text::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--primary-color);
+            opacity: 0.2;
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            font-family: serif;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+            background-color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(rgba(52, 152, 219, 0.9), rgba(41, 128, 185, 0.95)), url('https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .cta-section h2 {
+            color: var(--white);
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .cta-buttons .btn {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+
+        .cta-buttons .btn:hover {
+            background-color: var(--light-bg);
+            transform: translateY(-3px);
+        }
+
+        /* Booking Form */
+        .booking-form-section {
+            background-color: var(--light-bg);
+        }
+
+        .form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: var(--white);
+            padding: 50px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .form-title {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23333' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 16px;
+            padding-right: 40px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .checkbox-group input {
+            margin-right: 10px;
+            margin-top: 5px;
+        }
+
+        .checkbox-group label {
+            font-size: 0.9rem;
+        }
+
+        /* Trust Signals */
+        .trust-signals {
+            background-color: var(--white);
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .trust-card {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .trust-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background-color: var(--light-bg);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: var(--white);
+            margin-bottom: 15px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-question {
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .faq-question i {
+            transition: var(--transition);
+        }
+
+        .faq-answer {
+            padding: 0 30px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-answer p {
+            padding-bottom: 20px;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--text-dark);
+            color: var(--white);
+            padding: 70px 0 30px;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 1rem;
+            display: block;
+            text-decoration: none;
+        }
+
+        .footer-links h4 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .contact-info {
+            margin-top: 20px;
+        }
+
+        .contact-info p {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 10px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            width: 90%;
+            max-width: 500px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .modal-header {
+            padding: 25px 30px 10px;
+            text-align: center;
+        }
+
+        .modal-body {
+            padding: 10px 30px 30px;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin-top: 20px;
+            border: 1px solid #c3e6cb;
+            text-align: center;
+        }
+
+        /* Countdown Timer */
+        .countdown-timer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .countdown-value {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .countdown-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .step-row {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .step-row::before {
+                display: none;
+            }
+            
+            .step {
+                display: flex;
+                align-items: center;
+                text-align: left;
+            }
+            
+            .step-number {
+                margin: 0 20px 0 0;
+                flex-shrink: 0;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .form-container {
+                padding: 30px;
+            }
+            
+            .destination-grid, .package-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .destination-actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .destination-actions .btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.7rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .hero {
+                padding-top: 130px;
+            }
+            
+            .hero-buttons, .cta-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .hero-buttons .btn, .cta-buttons .btn {
+                width: 100%;
+            }
+            
+            .search-form .form-row {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="#" class="logo"><i class="fas fa-plane-departure"></i> Wanderlust</a>
+            
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#destinations">Destinations</a></li>
+                <li><a href="#packages">Packages</a></li>
+                <li><a href="#deals">Hot Deals</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#booking" class="btn btn-secondary">Book Now</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Discover Your Next Adventure with <span style="color: var(--accent-color);">Wanderlust</span></h1>
+                <p>Explore breathtaking destinations, create unforgettable memories, and find exclusive travel deals tailored just for you.</p>
+                <div class="hero-buttons">
+                    <a href="#booking" class="btn btn-accent btn-large">Book Your Trip</a>
+                    <a href="#deals" class="btn btn-secondary btn-large">View Hot Deals</a>
+                </div>
+            </div>
+            
+            <!-- Countdown Timer for Special Offer -->
+            <div class="countdown-timer">
+                <div class="countdown-item">
+                    <div class="countdown-value" id="days">05</div>
+                    <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="hours">12</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="minutes">30</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="seconds">45</div>
+                    <div class="countdown-label">Seconds</div>
+                </div>
+                <div style="font-weight: 600; font-size: 1.1rem; margin-top: 5px;">
+                    Limited Time Offer: Save 25% on All Bookings!
+                </div>
+            </div>
+            
+            <div class="hero-search">
+                <h3 class="search-title">Find Your Perfect Getaway</h3>
+                <form class="search-form" id="travel-search">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="destination">Destination</label>
+                            <input type="text" id="destination" class="form-control" placeholder="Where do you want to go?">
+                        </div>
+                        <div class="form-group">
+                            <label for="travel-type">Travel Type</label>
+                            <select id="travel-type" class="form-control">
+                                <option value="">Any Type</option>
+                                <option value="beach">Beach Vacation</option>
+                                <option value="adventure">Adventure</option>
+                                <option value="cultural">Cultural</option>
+                                <option value="romantic">Romantic Getaway</option>
+                                <option value="family">Family Friendly</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="check-in">Check-in Date</label>
+                            <input type="date" id="check-in" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="check-out">Check-out Date</label>
+                            <input type="date" id="check-out" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="travelers">Travelers</label>
+                            <select id="travelers" class="form-control">
+                                <option value="1">1 Traveler</option>
+                                <option value="2" selected>2 Travelers</option>
+                                <option value="3">3 Travelers</option>
+                                <option value="4">4 Travelers</option>
+                                <option value="5+">5+ Travelers</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="budget">Budget Range</label>
+                            <select id="budget" class="form-control">
+                                <option value="">Any Budget</option>
+                                <option value="0-1000">Up to $1,000</option>
+                                <option value="1000-2500">$1,000 - $2,500</option>
+                                <option value="2500-5000">$2,500 - $5,000</option>
+                                <option value="5000+">$5,000+</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-large" style="width: 100%;">Search Packages</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destinations -->
+    <section class="destinations" id="destinations">
+        <div class="container">
+            <div class="section-title">
+                <h2>Popular Destinations</h2>
+                <p>Discover the world's most breathtaking locations</p>
+            </div>
+            
+            <div class="destination-grid">
+                <div class="destination-card">
+                    <div class="destination-image" style="background-image: url('https://images.unsplash.com/photo-1516483638261-f4dbaf036963?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                        <div class="destination-badge">Best Seller</div>
+                    </div>
+                    <div class="destination-content">
+                        <h3>Bali, Indonesia</h3>
+                        <p class="destination-price">From $1,299</p>
+                        <p>Experience paradise with stunning beaches, lush jungles, and vibrant culture in the Island of the Gods.</p>
+                        
+                        <div class="destination-meta">
+                            <span><i class="fas fa-calendar-alt"></i> 7 Days</span>
+                            <span><i class="fas fa-plane"></i> Flights Included</span>
+                            <span><i class="fas fa-hotel"></i> 4-Star Hotel</span>
+                        </div>
+                        
+                        <div class="destination-actions">
+                            <button class="btn btn-primary book-now-btn" data-destination="Bali">Book Now</button>
+                            <a href="#" class="btn btn-secondary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="destination-card">
+                    <div class="destination-image" style="background-image: url('https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                        <div class="destination-badge">Limited Offer</div>
+                    </div>
+                    <div class="destination-content">
+                        <h3>Santorini, Greece</h3>
+                        <p class="destination-price">From $1,899</p>
+                        <p>Discover the iconic white-washed buildings and stunning sunsets of this beautiful Greek island.</p>
+                        
+                        <div class="destination-meta">
+                            <span><i class="fas fa-calendar-alt"></i> 5 Days</span>
+                            <span><i class="fas fa-plane"></i> Flights Included</span>
+                            <span><i class="fas fa-hotel"></i> Luxury Villa</span>
+                        </div>
+                        
+                        <div class="destination-actions">
+                            <button class="btn btn-primary book-now-btn" data-destination="Santorini">Book Now</button>
+                            <a href="#" class="btn btn-secondary">View Details</a>
+                       
